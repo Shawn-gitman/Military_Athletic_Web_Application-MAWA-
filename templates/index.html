@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Loanday Template">
+    <meta name="keywords" content="Loanday, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>토우리그 공식사이트</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/elegant-icons.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/nice-select.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/magnific-popup.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/jquery-ui.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/slicknav.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    
+</head>
+
+<body>
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+    
+
+    <!-- Offcanvas Menu Begin -->
+    <div class="offcanvas-menu-overlay"></div>
+    <div class="offcanvas-menu-wrapper">
+        <div class="offcanvas__search">
+            <i class="fa fa-search search-switch"></i>
+        </div>
+        <div class="offcanvas__logo">
+            <a href="./index.html"><img src="{{ url_for('static', filename='img/towlogo.png') }}" alt=""></a>
+        </div>
+        <nav class="offcanvas__menu mobile-menu">
+            <ul>
+                <li class="active"><a href="./index.html">Home</a></li>
+                <li><a href="./about.html">About</a></li>
+                <li><a href="./services.html">Services</a></li>
+                <li><a href="./blog.html">Blog</a></li>
+                <li><a href="#">Pages</a>
+                    <ul class="dropdown">
+                        <li><a href="./services.html">Features</a></li>
+                        <li><a href="./services-details.html">Services Details</a></li>
+                        <li><a href="./blog-details.html">Blog Details</a></li>
+                    </ul>
+                </li>
+                <li><a href="./contact.html">Contact</a></li>
+            </ul>
+        </nav>
+        <div id="mobile-menu-wrap"></div>
+        <ul class="offcanvas__widget">
+            <li><i class="fa fa-map-marker"></i> 96 Ernser Vista Suite 437, NY, US</li>
+            <li><i class="fa fa-phone"></i> (123) 456-78-910</li>
+            <li><i class="fa fa-envelope"></i> Info@colorli</li>
+            <li><i class="fa fa-envelope"></i> Info@co</li>
+            
+        </ul>
+        <div class="offcanvas__language">
+            <img src="{{ url_for('static', filename='img/flag.png') }}" alt="">
+            <span>English</span>
+            <i class="fa fa-angle-down"></i>
+            <ul>
+                <li><a href="#">dh</a></li>
+                <li><a href="#">Bangla</a></li>
+            </ul>
+        </div>
+    </div>
+    <!-- Offcanvas Menu End -->
+
+    <!-- Header Section Begin -->
+    <header class="header">
+        <div class="header__top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-9">
+                        <ul class="header__top__widget">
+                            <form action="#" method="post">
+                                <li><i class="fa fa-map-marker"></i> 96 Ernser Vista Suite 437, NY, US</li>
+                                <li><i class="fa fa-phone"></i> (123) 456-78-910</li>
+                                
+                                {% if session['logged_in'] == True %}
+                                    <li><i class="fa fa-envelope"></i>환영합니다, {{usr}}님</li>
+                                    <li><a href="logout" class="primary-btn-s">로그아웃</a></li>
+                                {% else %}
+                                    <li><a href="login" class="primary-btn-s">로그인</a></li>
+                                    <li><a href="create" class="primary-btn-s">회원가입</a></li>
+                                {% endif %}
+                                
+                            </form>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="header__top__language">
+                            <img src="{{ url_for('static', filename='img/flag.png') }}" alt="">
+                            <span>English</span>
+                            <i class="fa fa-angle-down"></i>
+                            <ul>
+                                <li><a href="#">English</a></li>
+                                <li><a href="#">Bangla</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="header__logo">
+                        <a href="main"><img src="{{ url_for('static', filename='img/towlogo5.png') }}" alt="" ></a>
+                    </div>
+                </div>
+                <div class="col-lg-9">
+                    <div class="header__nav">
+                        <nav class="header__menu">
+                            <ul>
+                                <li class="active"><a href="main">홈</a></li>
+                                <li><a href="./about.html">토우리그</a></li>
+                                <li><a href="bulletin">게시판</a></li>
+                                <li><a href="lottery">상점추첨</a></li>
+                                <li><a href="#">페이지</a>
+                                    <ul class="dropdown">
+                                        <li><a href="./services.html">Features</a></li>
+                                        <li><a href="./services-details.html">Services Details</a></li>
+                                        <li><a href="./blog-details.html">Blog Details</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="./contact.html">연락처</a></li>
+                            </ul>
+                        </nav>
+                        <div class="header__search">
+                            <i class="fa fa-search search-switch"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="canvas__open">
+                <span class="fa fa-bars"></span>
+            </div>
+        </div>
+    </header>
+    <!-- Header Section End -->
+
+    <!-- Hero Section Begin -->
+    <section class="hero set-bg" data-setbg="{{ url_for('static', filename='img/soccer.jpg') }}">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5">
+                    <div class="hero__text">
+                        <h2>지금 즉시 토우리그에 참여하세요!</h2>
+                        <p>간편가입으로 토우리그 진행방식에 대해 알아보세요.</p>
+                        <a href="#" class="primary-btn">리그현황</a>
+                        <a href="#" class="primary-btn howit-btn">리그진행방식</a>
+                    </div>
+                </div>
+                <div class="col-lg-5 offset-lg-2">
+                    <div class="hero__form">
+                        <h3>간편 회원가입</h3>
+                        <form action="/main" method="post">
+                            <div class="input-list">
+                                <div class="input-list-item">
+                                    <p>군번:</p>
+                                    <input type="text" name="month">
+                                </div>
+                                <div class="input-list-item">
+                                    <p>생년월일:</p>
+                                    <input type="text" name="year">
+                                </div>
+                            </div>
+                            <div class="input-full-width">
+                                <p>참여팀:</p>
+                                <input type="text" name = "level">
+                            </div>
+                            <div class="input-list last">
+                                <div class="input-list-item">
+                                    <p>아이디:</p>
+                                    <input type="text" , placeholder="Enter Name", name="username" />
+                                </div>
+                                <div class="input-list-item">
+                                    <p>비밀번호:</p>
+                                    <input type="password" , placeholder = "Enter Password", name ="password" />
+                                </div>
+                            </div>
+                            <button type="submit" class="site-btn">계정 회원가입</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Hero Section End -->
+
+    <!-- Home About Begin -->
+    <section class="home-about spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="home__about__text">
+                        <div class="section-title">
+                            <h2>토우중대의 30년역사, 토우리그</h2>
+                            <p>토우리그는 30년전 창설일을 기준으로 많은 병사들이 즐겨온 항목 중 하나입니다. 풋살이라는 기존 항목으로 토우중대원들과 함께하는 시간을 가져보세요</p>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6">
+                                <div class="home__about__item">
+                                    <h4>토우리그?</h4>
+                                    <p>토우리그는 과거 30년전부터 이어온 풋살경기입니다.</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6">
+                                <div class="home__about__item">
+                                    <h4>어떻게?</h4>
+                                    <p>리그는 8개의 팀으로 이루어져 토너먼트 방식으로 진행됩니다.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="£" class="primary-btn">더 알아보기</a>
+                    </div>
+                </div>
+                <div class="col-lg-5 offset-lg-1">
+                    <div class="home__about__img">
+                        <img src="{{ url_for('static', filename='img/about/soccer2.jpg') }}" alt="" width=500px height=60%>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Home About End -->
+
+    <!-- Loan Services Section Begin -->
+    <section class="loan-services spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title">
+                        <h2>Discover all the loans for you</h2>
+                        <p>If you try to cut corners on your brochure you will end up spending more money</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="loan__services__list">
+                <div class="loan__services__item set-bg" data-setbg="{{ url_for('static', filename='img/loan-services/ls-1.jpg') }}">
+                    <div class="loan__services__item__text">
+                        <h4><span>01.</span> Personal Loan</h4>
+                        <p>But that’s not the kind of attention you want, is it?</p>
+                        <a href="#">Find Out More</a>
+                    </div>
+                </div>
+                <div class="loan__services__item set-bg" data-setbg="{{ url_for('static', filename='img/loan-services/ls-2.jpg') }}">
+                    <div class="loan__services__item__text">
+                        <h4><span>02.</span> Business Loan</h4>
+                        <p>But that’s not the kind of attention you want, is it?</p>
+                        <a href="#">Find Out More</a>
+                    </div>
+                </div>
+                <div class="loan__services__item set-bg" data-setbg="{{ url_for('static', filename='img/loan-services/ls-3.jpg') }}">
+                    <div class="loan__services__item__text">
+                        <h4><span>03.</span> Education Loan</h4>
+                        <p>But that’s not the kind of attention you want, is it?</p>
+                        <a href="#">Find Out More</a>
+                    </div>
+                </div>
+                <div class="loan__services__item set-bg" data-setbg="{{ url_for('static', filename='img/loan-services/ls-4.jpg') }}">
+                    <div class="loan__services__item__text">
+                        <h4><span>04.</span> Commercial Loan</h4>
+                        <p>But that’s not the kind of attention you want, is it?</p>
+                        <a href="#">Find Out More</a>
+                    </div>
+                </div>
+                <div class="loan__services__item set-bg" data-setbg="{{ url_for('static', filename='img/loan-services/ls-5.jpg') }}">
+                    <div class="loan__services__item__text">
+                        <h4><span>05.</span> Health Loan</h4>
+                        <p>But that’s not the kind of attention you want, is it?</p>
+                        <a href="#">Find Out More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Loan Services Section End -->
+
+    <!-- Choose Section Begin -->
+    <section class="choose spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title">
+                        <h2>Why People Choose Us</h2>
+                        <p>This question should make the viewer want to open the brochure to learn more.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-sm-6">
+                    <div class="choose__item">
+                        <img src="{{ url_for('static', filename='img/choose/choose-1.png') }}" alt="">
+                        <h5>Quick & Easy</h5>
+                        <p>Typography should be relevant and thought out. Type is so strong that it can</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-6">
+                    <div class="choose__item">
+                        <img src="{{ url_for('static', filename='img/choose/choose-2.png') }}" alt="">
+                        <h5>Absolute Security</h5>
+                        <p>Typography should be relevant and thought out. Type is so strong that it can</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-6">
+                    <div class="choose__item">
+                        <img src="{{ url_for('static', filename='img/choose/choose-3.png') }}" alt="">
+                        <h5>Quick Approval</h5>
+                        <p>Typography should be relevant and thought out. Type is so strong that it can</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-6">
+                    <div class="choose__item">
+                        <img src="{{ url_for('static', filename='img/choose/choose-4.png') }}" alt="">
+                        <h5>Low Interest Rates</h5>
+                        <p>Typography should be relevant and thought out. Type is so strong that it can</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-6">
+                    <div class="choose__item">
+                        <img src="{{ url_for('static', filename='img/choose/choose-5.png') }}" alt="">
+                        <h5>Personal Security</h5>
+                        <p>Typography should be relevant and thought out. Type is so strong that it can</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-6">
+                    <div class="choose__item">
+                        <img src="{{ url_for('static', filename='img/choose/choose-6.png') }}" alt="">
+                        <h5>Disbursement Day</h5>
+                        <p>Typography should be relevant and thought out. Type is so strong that it can</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Choose Section End -->
+
+    <!-- Testimonial Section Begin -->
+    <div class="testimonial spad set-bg" data-setbg="{{ url_for('static', filename='img/testimonial/testimonial-bg.jpg') }}">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title">
+                        <h2>What Customers Are Saying</h2>
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting has been the</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="testimonial__carousel">
+        <div class="container">
+            <div class="row">
+                <div class="testimonial__slider owl-carousel">
+                    <div class="col-lg-4">
+                        <div class="testimonial__item">
+                            <img src="{{ url_for('static', filename='img/testimonial/testimonial-1.png') }}" alt="">
+                            <h5>Gussie Williamson</h5>
+                            <span>Ceo Colorlib</span>
+                            <p>Thereby, choosing the right business card design is important and requires careful
+                                considerations so that it will not look cheap and may tarnish your reputation in this
+                                highly</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="testimonial__item">
+                            <img src="{{ url_for('static', filename='img/testimonial/testimonial-2.png') }}" alt="">
+                            <h5>James Santos</h5>
+                            <span>Ceo Colorlib</span>
+                            <p>You need to pay special attention to the type of colors in your business cards. For
+                                instance, if you’re in the funeral industry, bright-luminous type of colors may not be
+                                too.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="testimonial__item">
+                            <img src="{{ url_for('static', filename='img/testimonial/testimonial-3.png') }}" alt="">
+                            <h5>Birdie Hamilton</h5>
+                            <span>Ceo Colorlib</span>
+                            <p>Ensure that the details of your business card are up to date. Business card with outdated
+                                contact numbers and addresses should be amended before distributing to your clients.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="testimonial__item">
+                            <img src="{{ url_for('static', filename='img/testimonial/testimonial-2.png') }}" alt="">
+                            <h5>James Santos</h5>
+                            <span>Ceo Colorlib</span>
+                            <p>You need to pay special attention to the type of colors in your business cards. For
+                                instance, if you’re in the funeral industry, bright-luminous type of colors may not be
+                                too.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Testimonial Section End -->
+
+    <!-- Counter Begin -->
+    <div class="counter spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-6">
+                    <div class="counter__item">
+                        <img src="{{ url_for('static', filename='img/counter/counter-1.png') }}" alt="">
+                        <div class="counter__number">
+                            <h2 class="counter-add">2100</h2>
+                        </div>
+                        <p>Successful Loan Approval</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6">
+                    <div class="counter__item">
+                        <img src="{{ url_for('static', filename='img/counter/counter-2.png') }}" alt="">
+                        <div class="counter__number">
+                            <h2 class="counter-add">99</h2>
+                            <span>%</span>
+                        </div>
+                        <p>Customer Satisfection</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6">
+                    <div class="counter__item">
+                        <img src="{{ url_for('static', filename='img/counter/counter-3.png') }}" alt="">
+                        <div class="counter__number">
+                            <h2 class="counter-add">90</h2>
+                            <span>+</span>
+                        </div>
+                        <p>Office National Partners</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6">
+                    <div class="counter__item">
+                        <img src="{{ url_for('static', filename='img/counter/counter-4.png') }}" alt="">
+                        <div class="counter__number">
+                            <h2 class="counter-add">70</h2>
+                            <span>+</span>
+                        </div>
+                        <p>Award Certificate</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Counter End -->
+
+    <!-- Call Section Begin -->
+    <section class="call spad set-bg" data-setbg="{{ url_for('static', filename='img/call-bg.jpg') }}">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5 col-md-6">
+                    <div class="call__text">
+                        <div class="section-title">
+                            <h2>Request A Call Back</h2>
+                            <p>Posters had been a very beneficial marketing tool because it had paved to deliver an
+                                effective message that conveyed customer’s attention.</p>
+                        </div>
+                        <a href="#">Contact Us</a>
+                    </div>
+                </div>
+                <div class="col-lg-6 offset-lg-1 col-md-6">
+                    <form action="#" class="call__form">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <input type="text" placeholder="Name">
+                            </div>
+                            <div class="col-lg-6">
+                                <input type="text" placeholder="Email">
+                            </div>
+                            <div class="col-lg-6">
+                                <input type="text" placeholder="Phone">
+                            </div>
+                            <div class="col-lg-6">
+                                <select>
+                                    <option value="">Choose Our Services</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button type="submit" class="site-btn">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Call Section End -->
+
+    <!-- Blog Section Begin -->
+    <section class="latest spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title">
+                        <h2>Latest Post</h2>
+                        <p>Certainly at that point I was not a potential client for the Strib, but promotional</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-sm-6">
+                    <div class="latest__blog__item">
+                        <h5><a href="#">Get Best Advertiser In Your Side</a></h5>
+                        <p>The StarTribune doesn’t just hand out the responsibility of informing their community’s
+                            citizenry on a daily basis to just any...</p>
+                        <div class="latest__blog__author">
+                            <div class="latest__blog__author__pic">
+                                <img src="{{ url_for('static', filename='img/latest/lb-1.png') }}" alt="">
+                            </div>
+                            <div class="latest__blog__author__text">
+                                <h6>May Cain</h6>
+                                <span>19th March, 2019</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-6">
+                    <div class="latest__blog__item">
+                        <h5><a href="#">Internet Advertising Trends You</a></h5>
+                        <p>Nope, I had to interview for this job. And I tell you, I was magnificent, so much so that, as
+                            you know, I got the position...</p>
+                        <div class="latest__blog__author">
+                            <div class="latest__blog__author__pic">
+                                <img src="{{ url_for('static', filename='img/latest/lb-2.png') }}" alt="">
+                            </div>
+                            <div class="latest__blog__author__text">
+                                <h6>May Cain</h6>
+                                <span>19th March, 2019</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-6">
+                    <div class="latest__blog__item">
+                        <h5><a href="#">Improve Your Business Cards</a></h5>
+                        <p>Upon completion of the interview the gentleman that was to give me my first opportunity at
+                            financial freedom...</p>
+                        <div class="latest__blog__author">
+                            <div class="latest__blog__author__pic">
+                                <img src="{{ url_for('static', filename='img/latest/lb-3.png') }}" alt="">
+                            </div>
+                            <div class="latest__blog__author__text">
+                                <h6>May Cain</h6>
+                                <span>19th March, 2019</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12 text-center">
+                    <a href="#" class="primary-btn">View More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Blog Section End -->
+
+    <!-- Contact Begin -->
+    <div class="contact-widget set-bg" data-setbg="{{ url_for('static', filename='img/contact-widget.jpg') }}">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6">
+                            <div class="contact__widget__item">
+                                <h4>New York Office</h4>
+                                <p>917 Atlantic Lane, Strongsville, NY, United State</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6">
+                            <div class="contact__widget__item">
+                                <h4>New Jersey Office</h4>
+                                <p>1 Walnut Court, East Orange, NJ, United State</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <div class="contact__widget__phone">
+                        <span>Contact Us Now!</span>
+                        <h2>(+12) 345-678-910</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Contact End -->
+
+    <!-- Footer Section Begin -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="footer__about">
+                        <div class="footer__logo">
+                            <a href="./index.html"><img src="{{ url_for('static', filename='img/footer-logo.png') }}" alt=""></a>
+                        </div>
+                        <p>Please remember though that how far you go is up to you. There is no substitute for your own
+                            work and effort in succeeding in this business.</p>
+                    </div>
+                </div>
+                <div class="col-lg-2 offset-lg-1 col-md-3 col-sm-6">
+                    <div class="footer__widget">
+                        <h5>Services</h5>
+                        <div class="footer__widget">
+                            <ul>
+                                <li><a href="#">Personal Loans</a></li>
+                                <li><a href="#">Business Loans</a></li>
+                                <li><a href="#">Online Cash Loans</a></li>
+                                <li><a href="#">Cash Advance</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6">
+                    <div class="footer__widget">
+                        <h5>Socials</h5>
+                        <div class="footer__widget footer__widget--social">
+                            <ul>
+                                <li><a href="#"><i class="fa fa-facebook"></i> Facebook</a></li>
+                                <li><a href="#"><i class="fa fa-instagram"></i> Instagram</a></li>
+                                <li><a href="#"><i class="fa fa-twitter"></i> Twitter</a></li>
+                                <li><a href="#"><i class="fa fa-skype"></i> Skype</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 offset-lg-1 col-md-6 col-sm-6">
+                    <div class="footer__widget footer__widget--address">
+                        <h5>Open Hours</h5>
+                        <p>We work all days a week, Please contact us for any inquiry.</p>
+                        <ul>
+                            <li>Monday - Friday: 11:00 am - 8:00 pm</li>
+                            <li>Saturday: 10:00 am - 6:00 pm</li>
+                            <li>Sunday: 11:00 am - 6:00 pm</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer__copyright">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6">
+                        <ul class="footer__copyright__links">
+                            <li><a href="#">Terms of use</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Community</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        <div class="footer__copyright__text">
+                            <p>Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a></p>
+                        </div>
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer Section End -->
+
+    <!-- Search Begin -->
+    <div class="search-model">
+        <div class="h-100 d-flex align-items-center justify-content-center">
+            <div class="search-close-switch">+</div>
+            <form class="search-model-form">
+                <input type="text" id="search-input" placeholder="Search here.....">
+            </form>
+        </div>
+    </div>
+    <!-- Search End -->
+
+    <!-- Js Plugins -->
+    <script src="{{ url_for('static', filename='js/jquery-3.3.1.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/jquery.nice-select.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/jquery-ui.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/jquery.nicescroll.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/jquery.magnific-popup.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/jquery.slicknav.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/owl.carousel.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+
+</html>

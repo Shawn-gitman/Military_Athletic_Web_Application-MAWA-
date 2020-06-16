@@ -1,0 +1,13 @@
+{% extends 'services.html' %}
+{% block body %}
+<hr color="black">
+{% for item in values %}
+    <a href="#" >순번: {{item.id}} 제목: {{item.title}}, 내용: {{item.content}}</a>
+    <a href="bulletin/update/{{item.id}}" style ="float: right; margin-left: 10px;"class="btn btn-warning btn-xs">Edit</a>
+    <a href="bulletin/delete/{{item.id}}" style ="float: right;"class="btn btn-danger btn-xs" onclick="return confirm('삭제하시겠습니까 ?')">Delete</a>
+    <p style = "float: right;">작성자: {{item.writer}}&nbsp;&nbsp;</p>
+    <hr color="black">
+    </p>
+    
+{% endfor %}
+{% endblock %}

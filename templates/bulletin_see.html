@@ -38,22 +38,22 @@
             <i class="fa fa-search search-switch"></i>
         </div>
         <div class="offcanvas__logo">
-            <a href="./index.html"><img src="{{ url_for('static', filename='img/towlogo5.png') }}" alt=""></a>
+            <a href="./index.html"><img src="{{ url_for('static', filename='img/logo.png') }}" alt=""></a>
         </div>
         <nav class="offcanvas__menu mobile-menu">
             <ul>
-                <li class="active"><a href="main">홈</a></li>
-                <li><a href="towleague">토우리그</a></li>
-                <li><a href="bulletin">게시판</a></li>
-                <li><a href="lottery">상점추첨</a></li>
-                <li><a href="#">페이지</a>
+                <li class="active"><a href="./index.html">Home</a></li>
+                <li><a href="./about.html">About</a></li>
+                <li><a href="./services.html">Services</a></li>
+                <li><a href="./blog.html">Blog</a></li>
+                <li><a href="#">Pages</a>
                     <ul class="dropdown">
                         <li><a href="./services.html">Features</a></li>
                         <li><a href="./services-details.html">Services Details</a></li>
                         <li><a href="./blog-details.html">Blog Details</a></li>
                     </ul>
                 </li>
-                <li><a href="">연락처</a></li>
+                <li><a href="./contact.html">Contact</a></li>
             </ul>
         </nav>
         <div id="mobile-menu-wrap"></div>
@@ -65,7 +65,7 @@
                 <li><a href="logout" class="primary-btn-s">로그아웃</a></li>
             {% else %}
                 <li><a href="login" class="primary-btn-s">로그인</a></li>
-                <li><a href="main" class="primary-btn-s">회원가입</a></li>
+                <li><a href="create" class="primary-btn-s">회원가입</a></li>
             {% endif %}
         </ul>
         <div class="offcanvas__language">
@@ -94,7 +94,7 @@
                                 <li><a href="logout" class="primary-btn-s">로그아웃</a></li>
                             {% else %}
                                 <li><a href="login" class="primary-btn-s">로그인</a></li>
-                                <li><a href="main" class="primary-btn-s">회원가입</a></li>
+                                <li><a href="create" class="primary-btn-s">회원가입</a></li>
                             {% endif %}
                         </ul>
                     </div>
@@ -124,17 +124,17 @@
                         <nav class="header__menu">
                             <ul>
                                 <li><a href="main">홈</a></li>
-                                <li><a href="towleague">토우리그</a></li>
-                                <li><a href="bulletin">게시판</a></li>
-                                <li class="active"><a href="./blog.html">상점추첨</a></li>
+                                <li><a href="./about.html">토우리그</a></li>
+                                <li class="active"><a href="bulletin">게시판</a></li>
+                                <li><a href="lottery">상점추첨</a></li>
                                 <li><a href="#">페이지</a>
                                     <ul class="dropdown">
-                                        <li><a href="">Features</a></li>
-                                        <li><a href="">Services Details</a></li>
-                                        <li><a href="">Blog Details</a></li>
+                                        <li><a href="./services.html">Features</a></li>
+                                        <li><a href="./services-details.html">Services Details</a></li>
+                                        <li><a href="./blog-details.html">Blog Details</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="">연락처</a></li>
+                                <li><a href="./contact.html">연락처</a></li>
                             </ul>
                         </nav>
                         <div class="header__search">
@@ -150,17 +150,19 @@
     </header>
     <!-- Header Section End -->
 
+    
+
     <!-- Breadcrumb Section Begin -->
     <div class="breadcrumb-option set-bg" data-setbg="{{ url_for('static', filename='img/breadcrumb/breadcrumb-bg.jpg') }}">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <div class="breadcrumb__text">
-                        <h2>복불복 상점추첨</h2>
+                        <h2>자유게시판</h2>
                         <div class="breadcrumb__links">
                             <a href="./index.html">홈</a>
-                            <a href="./index.html">상점추첨</a>
-                            <span>복불복 상점추첨</span>
+                            <a href="./index.html">게시판</a>
+                            <span>자유게시판</span>
                         </div>
                     </div>
                 </div>
@@ -168,19 +170,25 @@
         </div>
     </div>
     <!-- Breadcrumb Section End -->
-
+    
     <!-- Services Section Begin -->
     <section class="services spad">
         <div class="container">
-            {% block body %}
-                
-            {% endblock %}
-        </div>
-        <div class="container">
+            <p style ="text-align: center;">토우리그, 경기일정, 기타문의 자유롭게 글을 남겨주세요. 게시판은 로그인 이후 이용가능합니다.</p>
+            <hr color="black">
+            [{{id}}]
+            제목: {{d_title}}
+            <p>&nbsp;</p>
+            내용: {{d_content}}
+            <p>&nbsp;</p>       
+        
+        
             <form action="bulletin/create">
-                <button type="submit" class="site-btn">글쓰기</button>
+                <a href="../../update/{{id}}" style ="float: left; margin-right: 10px;"class="btn btn-warning btn-xs">Edit</a>
+                <a href="../../delete/{{id}}" style ="float: left;"class="btn btn-danger btn-xs" onclick="return confirm('삭제하시겠습니까 ?')">Delete</a>
             </form>
-            
+            <p>&nbsp;</p> 
+            <hr color="black">
             
         </div>
     </section>

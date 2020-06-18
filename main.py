@@ -40,6 +40,7 @@ class Bulletin(db.Model):
 
 @app.route("/")
 def home():
+    session['logged_in'] = False
     return redirect(url_for('main'))
 
 @app.route("/view")
@@ -53,7 +54,9 @@ def main():
         db.session.add(new_user)
         db.session.commit()
         return render_template('index.html')
-    if session['logged_in'] == True:
+    if session['logged_in'] == False:
+        return render_template("index.html")
+    elif session['logged_in'] == True:
         name = session['name']
         session.permanent = True
         return render_template("index.html", usr = name)
@@ -80,17 +83,28 @@ def login():
 			return "Dont Login"
 
 @app.route('/bulletin')
-def bulletin(): 
-    if session['logged_in'] == True:
+def bulletin():
+    if session['logged_in'] == False:
+        return render_template("bulletin.html")
+    elif session['logged_in'] == True:
         name = session['name']
         session.permanent = True
         return render_template("bulletin.html", usr = name, values=Bulletin.query.all())
     else:
         return render_template('bulletin.html', values=Bulletin.query.all())
 
+@app.route('/bulletin/bulletin_see/<id>/', methods=['GET', 'POST'])
+def bulletin_see(id):
+    data = Bulletin.query.get(id)
+    d_title = data.title
+    d_content = data.content
+    return render_template('bulletin_see.html', values=Bulletin.query.all(), d_title=d_title, id = id, d_content=d_content)
+
 @app.route('/bulletin/create', methods = ['GET', 'POST'])
 def create():
-    if session['logged_in'] == True:
+    if session['logged_in'] == False:
+        return render_template("create.html")
+    elif session['logged_in'] == True:
         if request.method == 'POST':
             writer = session['name']
             new_post = Bulletin(title = request.form['title'], content = request.form['content'], writer=writer)
@@ -138,9 +152,24 @@ def delete(id):
 
 @app.route("/lottery")
 def lottery():
-    return render_template("lottery.html")
+    if session['logged_in'] == False:
+        return render_template("lottery.html")
+    elif session['logged_in'] == True:
+        name = session['name']
+        session.permanent = True
+        return render_template("lottery.html", usr = name)
+
+@app.route("/towleague")
+def towleague():
+    if session['logged_in'] == False:
+        return render_template("towleague.html")
+    elif session['logged_in'] == True:
+        name = session['name']
+        session.permanent = True
+        return render_template("towleague.html", usr = name)
 
 
 if __name__ == "__main__":
     db.create_all()
     app.run(debug = True)
+    #app.run(host='0.0.0.0')

@@ -1,11 +1,14 @@
 {% extends 'services.html' %}
 {% block body %}
+<p style ="text-align: center;">토우리그, 경기일정, 기타문의 자유롭게 글을 남겨주세요. 게시판은 로그인 이후 이용가능합니다.</p>
 <hr color="black">
 {% for item in values %}
-    <a href="#" >순번: {{item.id}} 제목: {{item.title}}, 내용: {{item.content}}</a>
+    <a href="/bulletin/bulletin_see/{{item.id}}" >[{{item.id}}] 제목: {{item.title}}</a>
     <a href="bulletin/update/{{item.id}}" style ="float: right; margin-left: 10px;"class="btn btn-warning btn-xs">Edit</a>
     <a href="bulletin/delete/{{item.id}}" style ="float: right;"class="btn btn-danger btn-xs" onclick="return confirm('삭제하시겠습니까 ?')">Delete</a>
     <p style = "float: right;">작성자: {{item.writer}}&nbsp;&nbsp;</p>
+    <p>&nbsp;&nbsp;</p>
+    <p>&nbsp;&nbsp;</p>
     <hr color="black">
     </p>
     

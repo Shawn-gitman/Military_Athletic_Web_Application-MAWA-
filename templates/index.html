@@ -43,26 +43,31 @@
         </div>
         <nav class="offcanvas__menu mobile-menu">
             <ul>
-                <li class="active"><a href="./index.html">Home</a></li>
-                <li><a href="./about.html">About</a></li>
-                <li><a href="./services.html">Services</a></li>
-                <li><a href="./blog.html">Blog</a></li>
-                <li><a href="#">Pages</a>
+                <li class="active"><a href="main">홈</a></li>
+                <li><a href="towleague">토우리그</a></li>
+                <li><a href="bulletin">게시판</a></li>
+                <li><a href="lottery">상점추첨</a></li>
+                <li><a href="#">페이지</a>
                     <ul class="dropdown">
                         <li><a href="./services.html">Features</a></li>
                         <li><a href="./services-details.html">Services Details</a></li>
                         <li><a href="./blog-details.html">Blog Details</a></li>
                     </ul>
                 </li>
-                <li><a href="./contact.html">Contact</a></li>
+                <li><a href="">연락처</a></li>
             </ul>
         </nav>
         <div id="mobile-menu-wrap"></div>
         <ul class="offcanvas__widget">
-            <li><i class="fa fa-map-marker"></i> 96 Ernser Vista Suite 437, NY, US</li>
+            <li><i class="fa fa-map-marker"></i> 함께하자 토우, 토우중대 화이팅</li>
             <li><i class="fa fa-phone"></i> (123) 456-78-910</li>
-            <li><i class="fa fa-envelope"></i> Info@colorli</li>
-            <li><i class="fa fa-envelope"></i> Info@co</li>
+            {% if session['logged_in'] == True %}
+                <li><i class="fa fa-envelope"></i>환영합니다, {{usr}}님</li>
+                <li><a href="logout" class="primary-btn-s">로그아웃</a></li>
+            {% else %}
+                <li><a href="login" class="primary-btn-s">로그인</a></li>
+                <li><a href="main" class="primary-btn-s">회원가입</a></li>
+            {% endif %}
             
         </ul>
         <div class="offcanvas__language">
@@ -85,7 +90,7 @@
                     <div class="col-lg-9">
                         <ul class="header__top__widget">
                             <form action="#" method="post">
-                                <li><i class="fa fa-map-marker"></i> 96 Ernser Vista Suite 437, NY, US</li>
+                                <li><i class="fa fa-map-marker"></i> 함께하자 토우, 토우중대 화이팅</li>
                                 <li><i class="fa fa-phone"></i> (123) 456-78-910</li>
                                 
                                 {% if session['logged_in'] == True %}
@@ -93,7 +98,7 @@
                                     <li><a href="logout" class="primary-btn-s">로그아웃</a></li>
                                 {% else %}
                                     <li><a href="login" class="primary-btn-s">로그인</a></li>
-                                    <li><a href="create" class="primary-btn-s">회원가입</a></li>
+                                    <li><a href="main" class="primary-btn-s">회원가입</a></li>
                                 {% endif %}
                                 
                             </form>
@@ -125,7 +130,7 @@
                         <nav class="header__menu">
                             <ul>
                                 <li class="active"><a href="main">홈</a></li>
-                                <li><a href="./about.html">토우리그</a></li>
+                                <li><a href="towleague">토우리그</a></li>
                                 <li><a href="bulletin">게시판</a></li>
                                 <li><a href="lottery">상점추첨</a></li>
                                 <li><a href="#">페이지</a>
@@ -160,7 +165,7 @@
                         <h2>지금 즉시 토우리그에 참여하세요!</h2>
                         <p>간편가입으로 토우리그 진행방식에 대해 알아보세요.</p>
                         <a href="#" class="primary-btn">리그현황</a>
-                        <a href="#" class="primary-btn howit-btn">리그진행방식</a>
+                        <a href="#" class="primary-btn howit-btn">진행방식</a>
                     </div>
                 </div>
                 <div class="col-lg-5 offset-lg-2">
@@ -169,29 +174,29 @@
                         <form action="/main" method="post">
                             <div class="input-list">
                                 <div class="input-list-item">
-                                    <p>군번:</p>
+                                    <p>군번(예시: 19-xx):</p>
                                     <input type="text" name="month">
                                 </div>
                                 <div class="input-list-item">
-                                    <p>생년월일:</p>
+                                    <p>생년월일(예시: 960502):</p>
                                     <input type="text" name="year">
                                 </div>
                             </div>
                             <div class="input-full-width">
-                                <p>참여팀:</p>
+                                <p>참여팀(예시: 풋잡):</p>
                                 <input type="text" name = "level">
                             </div>
                             <div class="input-list last">
                                 <div class="input-list-item">
-                                    <p>아이디:</p>
+                                    <p>아이디(로그인 아이디):</p>
                                     <input type="text" , placeholder="Enter Name", name="username" />
                                 </div>
                                 <div class="input-list-item">
-                                    <p>비밀번호:</p>
+                                    <p>비밀번호(로그인 비밀번호):</p>
                                     <input type="password" , placeholder = "Enter Password", name ="password" />
                                 </div>
                             </div>
-                            <button type="submit" class="site-btn">계정 회원가입</button>
+                            <button type="submit" class="site-btn">토우리그 회원가입</button>
                         </form>
                     </div>
                 </div>
@@ -208,7 +213,7 @@
                     <div class="home__about__text">
                         <div class="section-title">
                             <h2>토우중대의 30년역사, 토우리그</h2>
-                            <p>토우리그는 30년전 창설일을 기준으로 많은 병사들이 즐겨온 항목 중 하나입니다. 풋살이라는 기존 항목으로 토우중대원들과 함께하는 시간을 가져보세요</p>
+                            <p>토우리그는 30년전 창설일을 기준으로 많은 병사들이 즐겨온 항목 중 하나입니다. 풋살이라는 기존 항목으로 토우중대원들과 함께하는 시간을 가져보세요.</p>
                         </div>
                         <div class="row">
                             <div class="col-lg-6 col-md-6">
@@ -237,367 +242,7 @@
     </section>
     <!-- Home About End -->
 
-    <!-- Loan Services Section Begin -->
-    <section class="loan-services spad">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="section-title">
-                        <h2>Discover all the loans for you</h2>
-                        <p>If you try to cut corners on your brochure you will end up spending more money</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="container-fluid">
-            <div class="loan__services__list">
-                <div class="loan__services__item set-bg" data-setbg="{{ url_for('static', filename='img/loan-services/ls-1.jpg') }}">
-                    <div class="loan__services__item__text">
-                        <h4><span>01.</span> Personal Loan</h4>
-                        <p>But that’s not the kind of attention you want, is it?</p>
-                        <a href="#">Find Out More</a>
-                    </div>
-                </div>
-                <div class="loan__services__item set-bg" data-setbg="{{ url_for('static', filename='img/loan-services/ls-2.jpg') }}">
-                    <div class="loan__services__item__text">
-                        <h4><span>02.</span> Business Loan</h4>
-                        <p>But that’s not the kind of attention you want, is it?</p>
-                        <a href="#">Find Out More</a>
-                    </div>
-                </div>
-                <div class="loan__services__item set-bg" data-setbg="{{ url_for('static', filename='img/loan-services/ls-3.jpg') }}">
-                    <div class="loan__services__item__text">
-                        <h4><span>03.</span> Education Loan</h4>
-                        <p>But that’s not the kind of attention you want, is it?</p>
-                        <a href="#">Find Out More</a>
-                    </div>
-                </div>
-                <div class="loan__services__item set-bg" data-setbg="{{ url_for('static', filename='img/loan-services/ls-4.jpg') }}">
-                    <div class="loan__services__item__text">
-                        <h4><span>04.</span> Commercial Loan</h4>
-                        <p>But that’s not the kind of attention you want, is it?</p>
-                        <a href="#">Find Out More</a>
-                    </div>
-                </div>
-                <div class="loan__services__item set-bg" data-setbg="{{ url_for('static', filename='img/loan-services/ls-5.jpg') }}">
-                    <div class="loan__services__item__text">
-                        <h4><span>05.</span> Health Loan</h4>
-                        <p>But that’s not the kind of attention you want, is it?</p>
-                        <a href="#">Find Out More</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Loan Services Section End -->
-
-    <!-- Choose Section Begin -->
-    <section class="choose spad">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="section-title">
-                        <h2>Why People Choose Us</h2>
-                        <p>This question should make the viewer want to open the brochure to learn more.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-4 col-md-4 col-sm-6">
-                    <div class="choose__item">
-                        <img src="{{ url_for('static', filename='img/choose/choose-1.png') }}" alt="">
-                        <h5>Quick & Easy</h5>
-                        <p>Typography should be relevant and thought out. Type is so strong that it can</p>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-6">
-                    <div class="choose__item">
-                        <img src="{{ url_for('static', filename='img/choose/choose-2.png') }}" alt="">
-                        <h5>Absolute Security</h5>
-                        <p>Typography should be relevant and thought out. Type is so strong that it can</p>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-6">
-                    <div class="choose__item">
-                        <img src="{{ url_for('static', filename='img/choose/choose-3.png') }}" alt="">
-                        <h5>Quick Approval</h5>
-                        <p>Typography should be relevant and thought out. Type is so strong that it can</p>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-6">
-                    <div class="choose__item">
-                        <img src="{{ url_for('static', filename='img/choose/choose-4.png') }}" alt="">
-                        <h5>Low Interest Rates</h5>
-                        <p>Typography should be relevant and thought out. Type is so strong that it can</p>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-6">
-                    <div class="choose__item">
-                        <img src="{{ url_for('static', filename='img/choose/choose-5.png') }}" alt="">
-                        <h5>Personal Security</h5>
-                        <p>Typography should be relevant and thought out. Type is so strong that it can</p>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-6">
-                    <div class="choose__item">
-                        <img src="{{ url_for('static', filename='img/choose/choose-6.png') }}" alt="">
-                        <h5>Disbursement Day</h5>
-                        <p>Typography should be relevant and thought out. Type is so strong that it can</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Choose Section End -->
-
-    <!-- Testimonial Section Begin -->
-    <div class="testimonial spad set-bg" data-setbg="{{ url_for('static', filename='img/testimonial/testimonial-bg.jpg') }}">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="section-title">
-                        <h2>What Customers Are Saying</h2>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting has been the</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="testimonial__carousel">
-        <div class="container">
-            <div class="row">
-                <div class="testimonial__slider owl-carousel">
-                    <div class="col-lg-4">
-                        <div class="testimonial__item">
-                            <img src="{{ url_for('static', filename='img/testimonial/testimonial-1.png') }}" alt="">
-                            <h5>Gussie Williamson</h5>
-                            <span>Ceo Colorlib</span>
-                            <p>Thereby, choosing the right business card design is important and requires careful
-                                considerations so that it will not look cheap and may tarnish your reputation in this
-                                highly</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="testimonial__item">
-                            <img src="{{ url_for('static', filename='img/testimonial/testimonial-2.png') }}" alt="">
-                            <h5>James Santos</h5>
-                            <span>Ceo Colorlib</span>
-                            <p>You need to pay special attention to the type of colors in your business cards. For
-                                instance, if you’re in the funeral industry, bright-luminous type of colors may not be
-                                too.</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="testimonial__item">
-                            <img src="{{ url_for('static', filename='img/testimonial/testimonial-3.png') }}" alt="">
-                            <h5>Birdie Hamilton</h5>
-                            <span>Ceo Colorlib</span>
-                            <p>Ensure that the details of your business card are up to date. Business card with outdated
-                                contact numbers and addresses should be amended before distributing to your clients.</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="testimonial__item">
-                            <img src="{{ url_for('static', filename='img/testimonial/testimonial-2.png') }}" alt="">
-                            <h5>James Santos</h5>
-                            <span>Ceo Colorlib</span>
-                            <p>You need to pay special attention to the type of colors in your business cards. For
-                                instance, if you’re in the funeral industry, bright-luminous type of colors may not be
-                                too.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Testimonial Section End -->
-
-    <!-- Counter Begin -->
-    <div class="counter spad">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3 col-md-3 col-sm-6">
-                    <div class="counter__item">
-                        <img src="{{ url_for('static', filename='img/counter/counter-1.png') }}" alt="">
-                        <div class="counter__number">
-                            <h2 class="counter-add">2100</h2>
-                        </div>
-                        <p>Successful Loan Approval</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-3 col-sm-6">
-                    <div class="counter__item">
-                        <img src="{{ url_for('static', filename='img/counter/counter-2.png') }}" alt="">
-                        <div class="counter__number">
-                            <h2 class="counter-add">99</h2>
-                            <span>%</span>
-                        </div>
-                        <p>Customer Satisfection</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-3 col-sm-6">
-                    <div class="counter__item">
-                        <img src="{{ url_for('static', filename='img/counter/counter-3.png') }}" alt="">
-                        <div class="counter__number">
-                            <h2 class="counter-add">90</h2>
-                            <span>+</span>
-                        </div>
-                        <p>Office National Partners</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-3 col-sm-6">
-                    <div class="counter__item">
-                        <img src="{{ url_for('static', filename='img/counter/counter-4.png') }}" alt="">
-                        <div class="counter__number">
-                            <h2 class="counter-add">70</h2>
-                            <span>+</span>
-                        </div>
-                        <p>Award Certificate</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Counter End -->
-
-    <!-- Call Section Begin -->
-    <section class="call spad set-bg" data-setbg="{{ url_for('static', filename='img/call-bg.jpg') }}">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-5 col-md-6">
-                    <div class="call__text">
-                        <div class="section-title">
-                            <h2>Request A Call Back</h2>
-                            <p>Posters had been a very beneficial marketing tool because it had paved to deliver an
-                                effective message that conveyed customer’s attention.</p>
-                        </div>
-                        <a href="#">Contact Us</a>
-                    </div>
-                </div>
-                <div class="col-lg-6 offset-lg-1 col-md-6">
-                    <form action="#" class="call__form">
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <input type="text" placeholder="Name">
-                            </div>
-                            <div class="col-lg-6">
-                                <input type="text" placeholder="Email">
-                            </div>
-                            <div class="col-lg-6">
-                                <input type="text" placeholder="Phone">
-                            </div>
-                            <div class="col-lg-6">
-                                <select>
-                                    <option value="">Choose Our Services</option>
-                                </select>
-                            </div>
-                        </div>
-                        <button type="submit" class="site-btn">Submit</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Call Section End -->
-
-    <!-- Blog Section Begin -->
-    <section class="latest spad">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="section-title">
-                        <h2>Latest Post</h2>
-                        <p>Certainly at that point I was not a potential client for the Strib, but promotional</p>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-4 col-md-4 col-sm-6">
-                    <div class="latest__blog__item">
-                        <h5><a href="#">Get Best Advertiser In Your Side</a></h5>
-                        <p>The StarTribune doesn’t just hand out the responsibility of informing their community’s
-                            citizenry on a daily basis to just any...</p>
-                        <div class="latest__blog__author">
-                            <div class="latest__blog__author__pic">
-                                <img src="{{ url_for('static', filename='img/latest/lb-1.png') }}" alt="">
-                            </div>
-                            <div class="latest__blog__author__text">
-                                <h6>May Cain</h6>
-                                <span>19th March, 2019</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-6">
-                    <div class="latest__blog__item">
-                        <h5><a href="#">Internet Advertising Trends You</a></h5>
-                        <p>Nope, I had to interview for this job. And I tell you, I was magnificent, so much so that, as
-                            you know, I got the position...</p>
-                        <div class="latest__blog__author">
-                            <div class="latest__blog__author__pic">
-                                <img src="{{ url_for('static', filename='img/latest/lb-2.png') }}" alt="">
-                            </div>
-                            <div class="latest__blog__author__text">
-                                <h6>May Cain</h6>
-                                <span>19th March, 2019</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-6">
-                    <div class="latest__blog__item">
-                        <h5><a href="#">Improve Your Business Cards</a></h5>
-                        <p>Upon completion of the interview the gentleman that was to give me my first opportunity at
-                            financial freedom...</p>
-                        <div class="latest__blog__author">
-                            <div class="latest__blog__author__pic">
-                                <img src="{{ url_for('static', filename='img/latest/lb-3.png') }}" alt="">
-                            </div>
-                            <div class="latest__blog__author__text">
-                                <h6>May Cain</h6>
-                                <span>19th March, 2019</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-12 text-center">
-                    <a href="#" class="primary-btn">View More</a>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Blog Section End -->
-
-    <!-- Contact Begin -->
-    <div class="contact-widget set-bg" data-setbg="{{ url_for('static', filename='img/contact-widget.jpg') }}">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 col-md-6">
-                    <div class="row">
-                        <div class="col-lg-6 col-md-6">
-                            <div class="contact__widget__item">
-                                <h4>New York Office</h4>
-                                <p>917 Atlantic Lane, Strongsville, NY, United State</p>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-6">
-                            <div class="contact__widget__item">
-                                <h4>New Jersey Office</h4>
-                                <p>1 Walnut Court, East Orange, NJ, United State</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-6">
-                    <div class="contact__widget__phone">
-                        <span>Contact Us Now!</span>
-                        <h2>(+12) 345-678-910</h2>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Contact End -->
+    
 
     <!-- Footer Section Begin -->
     <footer class="footer">
@@ -606,7 +251,7 @@
                 <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="footer__about">
                         <div class="footer__logo">
-                            <a href="./index.html"><img src="{{ url_for('static', filename='img/footer-logo.png') }}" alt=""></a>
+                            <a href="./index.html"><img src="{{ url_for('static', filename='img/towlogo5.png') }}" alt=""></a>
                         </div>
                         <p>Please remember though that how far you go is up to you. There is no substitute for your own
                             work and effort in succeeding in this business.</p>

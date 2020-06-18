@@ -38,22 +38,22 @@
             <i class="fa fa-search search-switch"></i>
         </div>
         <div class="offcanvas__logo">
-            <a href="./index.html"><img src="{{ url_for('static', filename='img/logo.png') }}" alt=""></a>
+            <a href="./index.html"><img src="{{ url_for('static', filename='img/towlogo5.png') }}" alt=""></a>
         </div>
         <nav class="offcanvas__menu mobile-menu">
             <ul>
-                <li class="active"><a href="./index.html">Home</a></li>
-                <li><a href="./about.html">About</a></li>
-                <li><a href="./services.html">Services</a></li>
-                <li><a href="./blog.html">Blog</a></li>
-                <li><a href="#">Pages</a>
+                <li class="active"><a href="main">홈</a></li>
+                <li><a href="">토우리그</a></li>
+                <li><a href="bulletin">게시판</a></li>
+                <li><a href="lottery">상점추첨</a></li>
+                <li><a href="#">페이지</a>
                     <ul class="dropdown">
                         <li><a href="./services.html">Features</a></li>
                         <li><a href="./services-details.html">Services Details</a></li>
                         <li><a href="./blog-details.html">Blog Details</a></li>
                     </ul>
                 </li>
-                <li><a href="./contact.html">Contact</a></li>
+                <li><a href="">연락처</a></li>
             </ul>
         </nav>
         <div id="mobile-menu-wrap"></div>
@@ -65,7 +65,7 @@
                 <li><a href="logout" class="primary-btn-s">로그아웃</a></li>
             {% else %}
                 <li><a href="login" class="primary-btn-s">로그인</a></li>
-                <li><a href="create" class="primary-btn-s">회원가입</a></li>
+                <li><a href="main" class="primary-btn-s">회원가입</a></li>
             {% endif %}
         </ul>
         <div class="offcanvas__language">
@@ -94,7 +94,7 @@
                                 <li><a href="logout" class="primary-btn-s">로그아웃</a></li>
                             {% else %}
                                 <li><a href="login" class="primary-btn-s">로그인</a></li>
-                                <li><a href="create" class="primary-btn-s">회원가입</a></li>
+                                <li><a href="main" class="primary-btn-s">회원가입</a></li>
                             {% endif %}
                         </ul>
                     </div>
@@ -124,7 +124,7 @@
                         <nav class="header__menu">
                             <ul>
                                 <li><a href="main">홈</a></li>
-                                <li><a href="./about.html">토우리그</a></li>
+                                <li><a href="towleague">토우리그</a></li>
                                 <li class="active"><a href="bulletin">게시판</a></li>
                                 <li><a href="lottery">상점추첨</a></li>
                                 <li><a href="#">페이지</a>
@@ -134,7 +134,7 @@
                                         <li><a href="./blog-details.html">Blog Details</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="./contact.html">연락처</a></li>
+                                <li><a href="">연락처</a></li>
                             </ul>
                         </nav>
                         <div class="header__search">
@@ -224,7 +224,7 @@
                 <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="footer__about">
                         <div class="footer__logo">
-                            <a href="./index.html"><img src="{{ url_for('static', filename='img/footer-logo.png') }}" alt=""></a>
+                            <a href="./index.html"><img src="{{ url_for('static', filename='img/towlogo5.png') }}" alt=""></a>
                         </div>
                         <p>Please remember though that how far you go is up to you. There is no substitute for your own
                             work and effort in succeeding in this business.</p>

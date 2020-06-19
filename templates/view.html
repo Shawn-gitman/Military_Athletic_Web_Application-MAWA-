@@ -1,3 +1,6 @@
+<hr color="black">
 {% for item in values %}
-    <p>id: {{item.id}}, name: {{item.username}}, pw: {{item.password}}, month: {{item.month}}, year: {{item.year}}, level: {{item.level}}</p>
+    id: {{item.id}}, name: {{item.username}}, pw: {{item.password}}, month: {{item.month}}, year: {{item.year}}, level: {{item.level}}
+    <a href="view/delete/{{item.id}}" style ="float: right;"class="btn btn-danger btn-xs" onclick="return confirm('삭제하시겠습니까 ?')">Delete</a>
+    <hr color="black">
 {% endfor %}

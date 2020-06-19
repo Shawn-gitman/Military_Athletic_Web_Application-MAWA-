@@ -126,7 +126,7 @@
                                 <li><a href="main">홈</a></li>
                                 <li  class="active"><a href="towleague">토우리그</a></li>
                                 <li><a href="bulletin">게시판</a></li>
-                                <li><a href="./blog.html">상점추첨</a></li>
+                                <li><a href="lottery">상점추첨</a></li>
                                 <li><a href="#">페이지</a>
                                     <ul class="dropdown">
                                         <li><a href="./services.html">Features</a></li>
@@ -177,8 +177,10 @@
             {% endblock %}
         </div>
         <div class="container">
-            <form action="bulletin/create">
-                <button type="submit" class="site-btn">글쓰기</button>
+            <form style ="text-align: center;" action="bulletin/create">
+                <img src="{{ url_for('static', filename='img/cal.png') }}" alt="">
+                <p>&nbsp;</p>
+                <img style ="text-align: center;" src="{{ url_for('static', filename='img/towinfo.png') }}" alt="">
             </form>
             
             

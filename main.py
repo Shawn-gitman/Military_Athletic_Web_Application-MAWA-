@@ -47,6 +47,14 @@ def home():
 def view():
     return render_template("view.html", values=User.query.all())
 
+@app.route("/view/delete/<id>/", methods = ['GET', 'POST'])
+def view_delete(id):
+    
+    data = User.query.get(id)
+    db.session.delete(data)
+    db.session.commit()
+    return redirect(url_for('view'))
+
 @app.route("/main", methods = ['GET', 'POST'])
 def main():
     if request.method == 'POST':
@@ -61,6 +69,7 @@ def main():
         session.permanent = True
         return render_template("index.html", usr = name)
     else:
+        session['logged_in'] = False
         return render_template("index.html")
     
 @app.route('/login', methods = ['GET', 'POST'])
@@ -98,7 +107,9 @@ def bulletin_see(id):
     data = Bulletin.query.get(id)
     d_title = data.title
     d_content = data.content
-    return render_template('bulletin_see.html', values=Bulletin.query.all(), d_title=d_title, id = id, d_content=d_content)
+    name_1 = session['name']
+    name = data.writer
+    return render_template('bulletin_see.html', values=Bulletin.query.all(), d_title=d_title, id = id, d_content=d_content, name=name, usr = name_1)
 
 @app.route('/bulletin/create', methods = ['GET', 'POST'])
 def create():
@@ -167,9 +178,10 @@ def towleague():
         name = session['name']
         session.permanent = True
         return render_template("towleague.html", usr = name)
+    return render_template("towleague.html")
 
 
 if __name__ == "__main__":
     db.create_all()
     app.run(debug = True)
-    #app.run(host='0.0.0.0')
+    #app.run(host="0.0.0.0", port=80)

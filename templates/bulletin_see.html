@@ -42,18 +42,18 @@
         </div>
         <nav class="offcanvas__menu mobile-menu">
             <ul>
-                <li class="active"><a href="./index.html">Home</a></li>
-                <li><a href="./about.html">About</a></li>
-                <li><a href="./services.html">Services</a></li>
-                <li><a href="./blog.html">Blog</a></li>
-                <li><a href="#">Pages</a>
+                <li class="active"><a href="../../../main">홈</a></li>
+                <li><a href="../../../towleague">토우리그</a></li>
+                <li><a href="../../../bulletin">게시판</a></li>
+                <li><a href="../../../lottery">상점추첨</a></li>
+                <li><a href="">페이지</a>
                     <ul class="dropdown">
-                        <li><a href="./services.html">Features</a></li>
-                        <li><a href="./services-details.html">Services Details</a></li>
-                        <li><a href="./blog-details.html">Blog Details</a></li>
+                        <li><a href="">Features</a></li>
+                        <li><a href="">Services Details</a></li>
+                        <li><a href="">Blog Details</a></li>
                     </ul>
                 </li>
-                <li><a href="./contact.html">Contact</a></li>
+                <li><a href="">연락처</a></li>
             </ul>
         </nav>
         <div id="mobile-menu-wrap"></div>
@@ -62,10 +62,10 @@
             <li><i class="fa fa-phone"></i> (123) 456-78-910</li>
             {% if session['logged_in'] == True %}
                 <li><i class="fa fa-envelope"></i>환영합니다, {{usr}}님</li>
-                <li><a href="logout" class="primary-btn-s">로그아웃</a></li>
+                <li><a href="../../../logout" class="primary-btn-s">로그아웃</a></li>
             {% else %}
-                <li><a href="login" class="primary-btn-s">로그인</a></li>
-                <li><a href="create" class="primary-btn-s">회원가입</a></li>
+                <li><a href="../../../login" class="primary-btn-s">로그인</a></li>
+                <li><a href="../../../create" class="primary-btn-s">회원가입</a></li>
             {% endif %}
         </ul>
         <div class="offcanvas__language">
@@ -91,10 +91,10 @@
                             <li><i class="fa fa-phone"></i> (123) 456-78-910</li>
                             {% if session['logged_in'] == True %}
                                 <li><i class="fa fa-envelope"></i>환영합니다, {{usr}}</li>
-                                <li><a href="logout" class="primary-btn-s">로그아웃</a></li>
+                                <li><a href="../../../logout" class="primary-btn-s">로그아웃</a></li>
                             {% else %}
-                                <li><a href="login" class="primary-btn-s">로그인</a></li>
-                                <li><a href="create" class="primary-btn-s">회원가입</a></li>
+                                <li><a href="../../../login" class="primary-btn-s">로그인</a></li>
+                                <li><a href="../../../create" class="primary-btn-s">회원가입</a></li>
                             {% endif %}
                         </ul>
                     </div>
@@ -123,18 +123,18 @@
                     <div class="header__nav">
                         <nav class="header__menu">
                             <ul>
-                                <li><a href="main">홈</a></li>
-                                <li><a href="./about.html">토우리그</a></li>
-                                <li class="active"><a href="bulletin">게시판</a></li>
-                                <li><a href="lottery">상점추첨</a></li>
-                                <li><a href="#">페이지</a>
+                                <li><a href="../../../main">홈</a></li>
+                                <li><a href="../../../towleague">토우리그</a></li>
+                                <li class="active"><a href="../../../bulletin">게시판</a></li>
+                                <li><a href="../../../lottery">상점추첨</a></li>
+                                <li><a href="">페이지</a>
                                     <ul class="dropdown">
-                                        <li><a href="./services.html">Features</a></li>
-                                        <li><a href="./services-details.html">Services Details</a></li>
-                                        <li><a href="./blog-details.html">Blog Details</a></li>
+                                        <li><a href="">Features</a></li>
+                                        <li><a href="">Services Details</a></li>
+                                        <li><a href="">Blog Details</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="./contact.html">연락처</a></li>
+                                <li><a href="">연락처</a></li>
                             </ul>
                         </nav>
                         <div class="header__search">
@@ -178,6 +178,7 @@
             <hr color="black">
             [{{id}}]
             제목: {{d_title}}
+            <p style = "float: right;">작성자: {{name}}&nbsp;&nbsp;</p>
             <p>&nbsp;</p>
             내용: {{d_content}}
             <p>&nbsp;</p>       

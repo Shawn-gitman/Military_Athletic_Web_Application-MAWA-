@@ -1,0 +1,8 @@
+<a href="../admin" style ="float: left;"class="btn btn-danger btn-xs" >돌아가기 &nbsp;</a>
+<a>&nbsp;</a>
+<hr color="black">
+{% for item in values %}
+    id: {{item.id}}, title: {{item.title}}, content: {{item.content}}
+    <a href="view_bulletin/delete/{{item.id}}" style ="float: right;"class="btn btn-danger btn-xs" onclick="return confirm('삭제하시겠습니까 ?')">Delete</a>
+    <hr color="black">
+{% endfor %}

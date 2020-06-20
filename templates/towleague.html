@@ -63,6 +63,9 @@
             {% if session['logged_in'] == True %}
                 <li><i class="fa fa-envelope"></i>환영합니다, {{usr}}님</li>
                 <li><a href="logout" class="primary-btn-s">로그아웃</a></li>
+                {% if usr == "강민수" %}
+                    <li><a href="admin" class="primary-btn-s">관리</a></li>
+                {% endif %}
             {% else %}
                 <li><a href="login" class="primary-btn-s">로그인</a></li>
                 <li><a href="main" class="primary-btn-s">회원가입</a></li>
@@ -92,6 +95,9 @@
                             {% if session['logged_in'] == True %}
                                 <li><i class="fa fa-envelope"></i>환영합니다, {{usr}}</li>
                                 <li><a href="logout" class="primary-btn-s">로그아웃</a></li>
+                                {% if usr == "강민수" %}
+                                    <li><a href="admin" class="primary-btn-s">관리</a></li>
+                                {% endif %}
                             {% else %}
                                 <li><a href="login" class="primary-btn-s">로그인</a></li>
                                 <li><a href="main" class="primary-btn-s">회원가입</a></li>
@@ -177,7 +183,10 @@
             {% endblock %}
         </div>
         <div class="container">
+            <p style ="text-align: center;">토우리그의 최신정보를 전달해드립니다. 업데이트 : 2020-06-20</p>
             <form style ="text-align: center;" action="bulletin/create">
+                <img src="{{ url_for('static', filename='img/vs.png') }}" alt="">
+                <p>&nbsp;</p>
                 <img src="{{ url_for('static', filename='img/cal.png') }}" alt="">
                 <p>&nbsp;</p>
                 <img style ="text-align: center;" src="{{ url_for('static', filename='img/towinfo.png') }}" alt="">

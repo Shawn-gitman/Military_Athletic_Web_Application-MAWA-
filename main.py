@@ -5,7 +5,7 @@ from datetime import timedelta
 app = Flask(__name__)
 app.secret_key ="hello"
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.sqlite3'
-app.permanent_session_lifetime = timedelta(minutes=5)
+app.permanent_session_lifetime = timedelta(days=5)
 
 app.permanent_session_lifetime = timedelta(minutes=5)
 
@@ -37,15 +37,37 @@ class Bulletin(db.Model):
         self.content = content
         self.writer = writer
 
+class Comment(db.Model):
+    id = db.Column(db.Integer, primary_key = True)
+    num = db.Column(db.String(80))
+    content = db.Column(db.String(80))
+    writer = db.Column(db.String(80))
+    def __init__(self, num, content, writer):
+        self.num = num
+        self.content = content
+        self.writer = writer
+
 
 @app.route("/")
 def home():
     session['logged_in'] = False
     return redirect(url_for('main'))
 
+@app.route("/admin")
+def admin():
+    return render_template("admin.html")
+
 @app.route("/view")
 def view():
     return render_template("view.html", values=User.query.all())
+
+@app.route("/view_bulletin")
+def view_bulletin():
+    return render_template("view_bulletin.html", values=Bulletin.query.all())
+
+@app.route("/view_comment")
+def view_comment():
+    return render_template("view_comment.html", values=Comment.query.all())
 
 @app.route("/view/delete/<id>/", methods = ['GET', 'POST'])
 def view_delete(id):
@@ -54,6 +76,22 @@ def view_delete(id):
     db.session.delete(data)
     db.session.commit()
     return redirect(url_for('view'))
+
+@app.route("/view_bulletin/delete/<id>/", methods = ['GET', 'POST'])
+def view_bulletin_delete(id):
+    
+    data = Bulletin.query.get(id)
+    db.session.delete(data)
+    db.session.commit()
+    return redirect(url_for('view_bulletin'))
+
+@app.route("/view_comment/delete/<id>/", methods = ['GET', 'POST'])
+def view_comment_delete(id):
+    
+    data = Comment.query.get(id)
+    db.session.delete(data)
+    db.session.commit()
+    return redirect(url_for('view_comment'))
 
 @app.route("/main", methods = ['GET', 'POST'])
 def main():
@@ -67,7 +105,7 @@ def main():
     elif session['logged_in'] == True:
         name = session['name']
         session.permanent = True
-        return render_template("index.html", usr = name)
+        return render_template("index.html", usr = name,values=User.query.all())
     else:
         session['logged_in'] = False
         return render_template("index.html")
@@ -104,12 +142,34 @@ def bulletin():
 
 @app.route('/bulletin/bulletin_see/<id>/', methods=['GET', 'POST'])
 def bulletin_see(id):
-    data = Bulletin.query.get(id)
-    d_title = data.title
-    d_content = data.content
-    name_1 = session['name']
-    name = data.writer
-    return render_template('bulletin_see.html', values=Bulletin.query.all(), d_title=d_title, id = id, d_content=d_content, name=name, usr = name_1)
+    if session['logged_in'] == False:
+        return render_template("bulletin_seel.html")
+    elif session['logged_in'] == True:
+        if request.method == 'POST':
+            writer = session['name']
+            new_comment = Comment(num = id, content = request.form['content'], writer = writer)
+            db.session.add(new_comment)
+            db.session.commit()
+
+            data = Bulletin.query.get(id)
+            d_title = data.title
+            d_content = data.content
+            name_1 = session['name']
+            name = data.writer
+
+            return render_template('bulletin_see.html', values=Bulletin.query.all(), d_title=d_title, id = id, d_content=d_content, name=name, usr = name_1,values_comment=Comment.query.all(), writer = writer)
+        else:
+            data = Bulletin.query.get(id)
+            d_title = data.title
+            d_content = data.content
+            name_1 = session['name']
+            name = data.writer
+            return render_template('bulletin_see.html', values=Bulletin.query.all(), d_title=d_title, id = id, d_content=d_content, name=name, usr = name_1,values_comment=Comment.query.all())
+        return render_template('bulletin_see.html', values=Bulletin.query.all(), d_title=d_title, id = id, d_content=d_content, name=name, usr = name_1,values_comment=Comment.query.all())
+    return render_template('bulletin_see.html', values=Bulletin.query.all(), d_title=d_title, id = id, d_content=d_content, name=name, usr = name_1,values_comment=Comment.query.all())
+
+
+
 
 @app.route('/bulletin/create', methods = ['GET', 'POST'])
 def create():
@@ -159,6 +219,15 @@ def delete(id):
         data = Bulletin.query.get(id)
         db.session.delete(data)
         db.session.commit()
+        
+        comment_values=Comment.query.all()
+        
+        
+        for item in comment_values:
+            if id == item.num:
+                comment_data= Comment.query.get(item.id)
+                db.session.delete(comment_data)
+                db.session.commit()
         return redirect(url_for('bulletin'))
 
 @app.route("/lottery")

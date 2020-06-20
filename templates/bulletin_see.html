@@ -38,7 +38,7 @@
             <i class="fa fa-search search-switch"></i>
         </div>
         <div class="offcanvas__logo">
-            <a href="./index.html"><img src="{{ url_for('static', filename='img/logo.png') }}" alt=""></a>
+            <a href="../../../main"><img src="{{ url_for('static', filename='img/towlogo5.png') }}" alt=""></a>
         </div>
         <nav class="offcanvas__menu mobile-menu">
             <ul>
@@ -116,7 +116,7 @@
             <div class="row">
                 <div class="col-lg-3">
                     <div class="header__logo">
-                        <a href="main"><img src="{{ url_for('static', filename='img/towlogo5.png') }}" alt=""></a>
+                        <a href="../../../main"><img src="{{ url_for('static', filename='img/towlogo5.png') }}" alt=""></a>
                     </div>
                 </div>
                 <div class="col-lg-9">
@@ -174,7 +174,11 @@
     <!-- Services Section Begin -->
     <section class="services spad">
         <div class="container">
-            <p style ="text-align: center;">토우리그, 경기일정, 기타문의 자유롭게 글을 남겨주세요. 게시판은 로그인 이후 이용가능합니다.</p>
+            {% if session['logged_in'] == True %}
+            <p style ="text-align: center;">토우리그, 경기일정, 기타문의 자유롭게 글을 남겨주세요.</p>
+            {% elif session['logged_in'] == False %}
+            <p style ="text-align: center;">게시판은 로그인 이후 이용가능합니다.</p>
+            {% endif %}
             <hr color="black">
             [{{id}}]
             제목: {{d_title}}
@@ -190,6 +194,19 @@
             </form>
             <p>&nbsp;</p> 
             <hr color="black">
+            {% for item in values_comment %}
+                
+                {% if item.num == id %}
+                    <p>{{item.writer}}님 댓글 : {{item.content}}</p>
+                    
+                    <hr color="black">
+                {% else: %}
+                {% endif %}
+            {% endfor %}
+            <form action="" method="post">
+                <textarea name = "content" cols="70" rows="2">댓글을 작성해주세요.</textarea>
+                <input type = "submit" value = "submit" />
+            </form>
             
         </div>
     </section>

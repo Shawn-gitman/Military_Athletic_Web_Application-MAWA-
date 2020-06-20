@@ -64,6 +64,11 @@
             {% if session['logged_in'] == True %}
                 <li><i class="fa fa-envelope"></i>환영합니다, {{usr}}님</li>
                 <li><a href="logout" class="primary-btn-s">로그아웃</a></li>
+
+                {% if usr == "강민수" %}
+                <li><a href="admin" class="primary-btn-s">관리</a></li>
+                {% endif %}
+                    
             {% else %}
                 <li><a href="login" class="primary-btn-s">로그인</a></li>
                 <li><a href="main" class="primary-btn-s">회원가입</a></li>
@@ -96,6 +101,9 @@
                                 {% if session['logged_in'] == True %}
                                     <li><i class="fa fa-envelope"></i>환영합니다, {{usr}}님</li>
                                     <li><a href="logout" class="primary-btn-s">로그아웃</a></li>
+                                    {% if usr == "강민수" %}
+                                        <li><a href="admin" class="primary-btn-s">관리</a></li>
+                                    {% endif %}
                                 {% else %}
                                     <li><a href="login" class="primary-btn-s">로그인</a></li>
                                     <li><a href="main" class="primary-btn-s">회원가입</a></li>
@@ -229,7 +237,7 @@
                                 </div>
                             </div>
                         </div>
-                        <a href="£" class="primary-btn">더 알아보기</a>
+                        <a href="towleague" class="primary-btn">더 알아보기</a>
                     </div>
                 </div>
                 <div class="col-lg-5 offset-lg-1">

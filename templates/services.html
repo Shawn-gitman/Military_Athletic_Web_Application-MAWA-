@@ -43,7 +43,7 @@
         <nav class="offcanvas__menu mobile-menu">
             <ul>
                 <li class="active"><a href="main">홈</a></li>
-                <li><a href="">토우리그</a></li>
+                <li><a href="towleague">토우리그</a></li>
                 <li><a href="bulletin">게시판</a></li>
                 <li><a href="lottery">상점추첨</a></li>
                 <li><a href="#">페이지</a>
@@ -63,6 +63,9 @@
             {% if session['logged_in'] == True %}
                 <li><i class="fa fa-envelope"></i>환영합니다, {{usr}}님</li>
                 <li><a href="logout" class="primary-btn-s">로그아웃</a></li>
+                {% if usr == "강민수" %}
+                    <li><a href="admin" class="primary-btn-s">관리</a></li>
+                {% endif %}
             {% else %}
                 <li><a href="login" class="primary-btn-s">로그인</a></li>
                 <li><a href="main" class="primary-btn-s">회원가입</a></li>
@@ -92,6 +95,9 @@
                             {% if session['logged_in'] == True %}
                                 <li><i class="fa fa-envelope"></i>환영합니다, {{usr}}</li>
                                 <li><a href="logout" class="primary-btn-s">로그아웃</a></li>
+                                {% if usr == "강민수" %}
+                                    <li><a href="admin" class="primary-btn-s">관리</a></li>
+                                {% endif %}
                             {% else %}
                                 <li><a href="login" class="primary-btn-s">로그인</a></li>
                                 <li><a href="main" class="primary-btn-s">회원가입</a></li>

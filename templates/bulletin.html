@@ -1,6 +1,10 @@
 {% extends 'services.html' %}
 {% block body %}
-<p style ="text-align: center;">토우리그, 경기일정, 기타문의 자유롭게 글을 남겨주세요. 게시판은 로그인 이후 이용가능합니다.</p>
+{% if session['logged_in'] == True %}
+    <p style ="text-align: center;">토우리그, 경기일정, 기타문의 자유롭게 글을 남겨주세요.</p>
+{% elif session['logged_in'] == False %}
+    <p style ="text-align: center;">게시판은 로그인 이후 이용가능합니다.</p>
+{% endif %}
 <hr color="black">
 
 {% for item in values %}

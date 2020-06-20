@@ -66,6 +66,9 @@
             {% if session['logged_in'] == True %}
                 <li><i class="fa fa-envelope"></i>환영합니다, {{usr}}님</li>
                 <li><a href="logout" class="primary-btn-s">로그아웃</a></li>
+                {% if usr == "강민수" %}
+                    <li><a href="admin" class="primary-btn-s">관리</a></li>
+                {% endif %}
             {% else %}
                 <li><a href="login" class="primary-btn-s">로그인</a></li>
                 <li><a href="main" class="primary-btn-s">회원가입</a></li>
@@ -90,11 +93,14 @@
                 <div class="row">
                     <div class="col-lg-9">
                         <ul class="header__top__widget">
-                            <li><i class="fa fa-map-marker"></i> 96 Ernser Vista Suite 437, NY, US</li>
+                            <li><i class="fa fa-map-marker"></i> 96 Ernser Vista Suite </li>
                             <li><i class="fa fa-phone"></i> (123) 456-78-910</li>
                             {% if session['logged_in'] == True %}
                                 <li><i class="fa fa-envelope"></i>환영합니다, {{usr}}</li>
                                 <li><a href="logout" class="primary-btn-s">로그아웃</a></li>
+                                {% if usr == "강민수" %}
+                                    <li><a href="admin" class="primary-btn-s">관리</a></li>
+                                {% endif %}
                             {% else %}
                                 <li><a href="login" class="primary-btn-s">로그인</a></li>
                                 <li><a href="main" class="primary-btn-s">회원가입</a></li>

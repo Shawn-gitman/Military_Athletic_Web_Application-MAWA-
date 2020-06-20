@@ -118,7 +118,7 @@ def login():
 		try:
 			data = User.query.filter_by(username = name, password=passw).first()
 			if data is not None:
-                session.permanent = True
+				session.permanent = True
 				session['logged_in'] = True
 				session['name'] = name
 				return render_template('index.html', usr = name)

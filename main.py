@@ -7,8 +7,6 @@ app.secret_key ="hello"
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.sqlite3'
 app.permanent_session_lifetime = timedelta(days=5)
 
-app.permanent_session_lifetime = timedelta(minutes=5)
-
 db = SQLAlchemy(app)
 
 
@@ -120,9 +118,9 @@ def login():
 		try:
 			data = User.query.filter_by(username = name, password=passw).first()
 			if data is not None:
+                session.permanent = True
 				session['logged_in'] = True
 				session['name'] = name
-				session.permanent = True
 				return render_template('index.html', usr = name)
 			else:
 				return redirect(url_for('login'))
@@ -252,4 +250,4 @@ def towleague():
 
 if __name__ == "__main__":
     db.create_all()
-    app.run(host="0.0.0.0", port=80)
+    app.run()

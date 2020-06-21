@@ -22,7 +22,7 @@ git checkout master -- path/within/repo/to/file
 
 ## Running the tests
 
-* Run main.py to implement Athletic_Web_Application. Enroll membership from enroll box in 127.0.0.0/main. As soon as, user registered to this web-application, find menu_bar on right-top to access login service(127.0.0.0/login). Users are available to use CRUD(create, read, update, delete) service by entering third option from the navigation bar. Writing comments are available for each post whenever users intend. All comment datas are deleted as the post had deleted. See roulette service(127.0.0.0/lottery) from fourth option, to set up strngth(Low, midium, high) and start running the feature.
+* Run main.py to implement Athletic_Web_Application. Enroll membership from enroll box in 127.0.0.0/main. As soon as, user registered to this web-application, find menu_icon on right-top to access login service(127.0.0.0/login). Users are available to use CRUD(create, read, update, delete) service by entering third option from the navigation bar. Writing comments are available for each post whenever users intend. All comment datas are deleted as the post had deleted. See roulette service(127.0.0.0/lottery) from fourth option, to set up strngth(Low, midium, high) and start running the feature.
 
 ## Break down into end to end tests
 

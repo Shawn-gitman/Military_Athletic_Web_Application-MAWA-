@@ -46,7 +46,9 @@ Please read README.md for details on our code of conduct, and the process for su
 
 ## Versioning
 
-No Versioning available.
+* 1.0.0 - Accessing bugs updated
+* 1.0.1 - Login problems updated
+* 1.0.2 - Permanent Session(to 5days) updated
 
 ## Authors
 

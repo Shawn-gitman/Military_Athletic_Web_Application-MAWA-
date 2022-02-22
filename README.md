@@ -4,13 +4,13 @@
  
  ![alt text](main.png)
 
-## Prerequisites
+## Prerequisites & Environmanet
 
 * Python (3.8.2)
 * Flask
 * Flask-SQLAlchemy
 * Amazon Linux AMI 2018.03.0 (HVM), SSD Volume Type - type : t2.large, network performance : Low to midium, vCPU : 2, Ipv4 support : available
-* Visual Studio Code (Recommended but not obligatory)
+* Visual Studio Code
 
 ## Installing
 

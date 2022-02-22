@@ -4,7 +4,7 @@
  
  ![alt text](main.png)
 
-## Prerequisites & Environmanet
+## Prerequisites & Environment
 
 * Python (3.8.2)
 * Flask

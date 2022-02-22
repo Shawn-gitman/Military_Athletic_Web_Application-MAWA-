@@ -1,6 +1,6 @@
 # Military Atheletic Web Application(MAWA) ⚽
  
- Military Atheletic Web Application(MAWA) is a website including key features such as authentication, authorization, CRUD, comment function and information page. We used Flask web-framework, sqlalchemy database, and AWS EC2 instance to launch the service. See demo @ https://athleticwebapp.shawngitman.repl.co/main
+ Military Atheletic Web Application(MAWA) is a website including key features such as authentication, authorization, CRUD, comment function and information page. We used Flask web-framework, sqlalchemy database, and AWS EC2 instance to launch the service. See demo @ https://athleticwebapp.shawngitman.repl.co/main (👈 Click!) (❗ NOTICE: Copyrightⓒ2019 ROKA All rights reserved. Copyrightⓒ2019)
 
 ## Prerequisites
 
